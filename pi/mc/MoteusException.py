@@ -20,8 +20,7 @@ init()
 
 class MoteusException(Exception):
 	"""
-	This is the base class for all exceptions that have to do with Moteus motor controllers.
-	
+		This is the base class for all exceptions that have to do with Moteus motor controllers.
 	"""
 
 	def __init__(self, message) -> None:
@@ -53,11 +52,12 @@ class MoteusPermissionsError(MoteusException):
 
 class MoteusCanError(MoteusException):
 	"""
-	The MoteusCanError is a more specific MoteusError that alerts the user there is something wrong with the CAN
-	configuration
+		_summary_ : The MoteusCanError is a more specific MoteusError that alerts the user there is something wrong with the CAN
+					configuration
 
-	As of now, it detects for three errors: Incorrect IDs/Buses, duplicate IDs, and too many CAN buses.
-	It will automatically detect them.
+					As of now, it detects for three errors: Incorrect IDs/Buses, duplicate IDs, and too many CAN buses.
+					It will automatically detect them.
+		Args : MoteusException: This is the base class for all exceptions that have to do with Moteus motor controllers.
 	"""
 
 	def __init__(self, message):
@@ -156,24 +156,30 @@ class MoteusCanError(MoteusException):
 
 	@staticmethod
 	def has_duplicates(arr):
-		"""This checks a list to see if it has any duplicates. Can be used for any list, but particularly it is meant
-		to make sure there are no duplicate IDs.
+		"""
+			This checks a list to see if it has any duplicates. Can be used for any list, but particularly it is meant
+			to make sure there are no duplicate IDs.
 		"""
 		return len(arr) != len(set(arr))
 
 
 class MoteusWarning(UserWarning):
-	"""MoteusWarning class is used as a warning instead of an error. Used for suggestions or if it is entering
-	simulation mode
+	"""
+		MoteusWarning class is used as a warning instead of an error. Used for suggestions or if it is entering
+		simulation mode
 	"""
 
 	def __init__(self, message=None):
-		"""Default constructor. It will print the message given, or the default as described below
+		"""
+			_Summary_: Default constructor. It will print the message given, or the default as described below
 
-		@param message
-		Will print the message, if it is left None it prints: - "The Moteus initialization
-		encountered errors so it is in Simulation Mode. To see the errors, disable Simulation Mode in the Moteus
-		class constructor by setting simulation = false"
+			Args: message
+
+			Return: Will print the message, if it is left None it prints: - "The Moteus initialization
+					encountered errors so it is in Simulation Mode. To see the errors, disable Simulation Mode in the Moteus
+					class constructor by setting simulation = false"
+
+					Returns None
 		"""
 		if message is None:
 			message = (
@@ -189,8 +195,9 @@ class MoteusWarning(UserWarning):
 
 	@staticmethod
 	def set_simulation_printing():
-		"""This function is useful for making all the prints have the prefix "[Simulation Mode]:",
-		although it only works in this thread so it is not necessarily useful.
+		"""
+			This function is useful for making all the prints have the prefix "[Simulation Mode]:",
+			although it only works in this thread so it is not necessarily useful.
 		"""
 		global exec_print
 
